@@ -1,8 +1,12 @@
 from setuptools import setup, find_packages
+import re
+version = re.findall('version\s*=\s*(\S+)\s*',
+    open('./openitcr/settings.toml.example','r').read(), re.S)[0]
+
 
 setup(
     name='openitcr',
-    version='0.0.1',
+    version = version,
     description='Open Information Technology Classroom',
     long_description=open('README.md').read(),
     long_description_content_type="text/markdown; charset=UTF-8",

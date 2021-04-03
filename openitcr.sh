@@ -12,4 +12,8 @@ test(){
     python3 -c 'from tests import test_0; test_0()'
 }
 
+st(){
+    bash openitcr/bin/openitcr
+}
+
 $1
