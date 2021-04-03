@@ -3,7 +3,7 @@
 #### Description
 Open Information Technology Classroom. (In fact, it's just some unities,
  I do nothing, thank you to the developers of all relevant projects),
- &#10084;&#65039; &#55357;&#56359;.
+ &#10084;&#65039; &#128039;.
 
 #### Software Architecture
 Software architecture description
