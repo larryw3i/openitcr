@@ -8,4 +8,8 @@ git_push(){
     git push git@github.com:larryw3i/openitcr.git
 }
 
+test(){
+    python3 -c 'from tests import test_0; test_0()'
+}
+
 $1
