@@ -1,7 +1,9 @@
 # openitcr
 
 #### Description
-Open Information Technology Classroom
+Open Information Technology Classroom. (In fact, it's just some unities,
+ I do nothing, thank you to the developers of all relevant projects),
+ &#10084;&#65039; &#55357;&#56359;.
 
 #### Software Architecture
 Software architecture description
@@ -28,9 +30,12 @@ Software architecture description
 
 #### Gitee Feature
 
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
+1.  You can use Readme\_XXX.md to support different languages, such as
+ Readme\_en.md, Readme\_zh.md
 2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
+3.  Explore open source project [https://gitee.com/explore]
+(https://gitee.com/explore)
 4.  The most valuable open source project [GVP](https://gitee.com/gvp)
 5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+6.  The most popular members  [https://gitee.com/gitee-stars/]
+(https://gitee.com/gitee-stars/)
