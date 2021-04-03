@@ -1,0 +1,1 @@
+python3 -c 'from openitcr import enjoy_now; enjoy_now();'
