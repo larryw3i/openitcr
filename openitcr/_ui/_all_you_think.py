@@ -5,7 +5,6 @@ from openitcr.ui.all_you_think import MainFrame
 
 def can_come_true():
     
-    root = tk.Tk()
-    app = MainFrame(root)
+    app = MainFrame()
     app.run()
     
