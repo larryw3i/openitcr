@@ -8,12 +8,14 @@ from openitcr.settings import settings_exam_path, settings_path, project_path, \
 localedir
 import re
 import toml
+from openitcr.common import str_is_lang
 
 def _now():
     print('Welcome to openitcr!')
 
-    from openitcr._ui import _all_you_think
     _enjoy = Enjoy()
+    
+    from openitcr._ui import _all_you_think
     sys_argv = sys.argv[1:]
     optlist , args  = getopt.getopt( sys_argv, '' )    
     
@@ -31,13 +33,10 @@ class Enjoy():
     Use only in this script
     '''
     def __init__(self):
-        self.lang_reg_str = '^[a-z]{2}_[A-Za-z]{2,}$'
         self.settings_exam = self.get_settings_exam()
         self.settings = None
         self.ready()
     
-    def str_is_lang(self, lstr=''):
-        return re.match( self.lang_reg_str, lstr )
 
     def ready( self ):
         if not self.is_initialized(): 
@@ -49,16 +48,12 @@ class Enjoy():
 
     def get_lang( self  ):
         locale_langs = [ l for l in os.listdir( f'{project_path}/locale') if  \
-        self.str_is_lang( l ) ]
+        str_is_lang( l ) ]
         lang = self.settings['lang']
         lang = 'en_US' if (not lang in locale_langs) else lang
+        print('lang -> '+lang )
         return lang
 
-    def set_lang( self, lstr='' ):
-        if not str_is_lang( lstr ):return
-        os.environ['openitcr_lang'] = lstr
-        settings['lang']=lstr
-        toml.dump( self.settings, settings_path )
 
     # setting
     def get_settings_exam( self ):
@@ -79,10 +74,9 @@ class Enjoy():
         for  (dirpath, dirnames, filenames) in os.walk( localedir ):
             for f in filenames:
                 if f == 'openitcr.po':
-                    abs_d_path = f'{project_path}/{dirpath}'
                     os.system(f'pybabel compile -d {localedir} '\
-                    +f'-i {abs_d_path}/openitcr.po -o {abs_d_path}/openitcr.mo')
-                    print(f'Compiled -> {abs_d_path}/openitcr.po')
+                    +f'-i {dirpath}/openitcr.po -o {dirpath}/openitcr.mo')
+                    print(f'Compiled -> {dirpath}/openitcr.po')
 
     def is_initialized(self):
         if  os.path.exists( settings_path ) :

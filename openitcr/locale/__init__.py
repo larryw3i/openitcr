@@ -5,6 +5,7 @@ from openitcr.settings import localedir
 
 # gettext
 lang = gettext.translation(
-    'openitcr', localedir = localedir, languages = ['en_US'])
+    'openitcr', localedir = localedir, languages = \
+    [ os.environ['openitcr_lang'] ])
 lang.install()
 _ = lang.gettext
