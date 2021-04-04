@@ -1,1 +1,1 @@
-python3 -c 'from openitcr import enjoy_now; enjoy_now();'
+python3 -c 'from openitcr.enjoy import _now; _now();'
