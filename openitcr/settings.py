@@ -17,6 +17,12 @@ localedir =  os.path.join( project_path, 'locale')
 settings_exam_path = os.path.join( project_path,'settings.toml.example' )
 settings_path = os.join( project_path,'settings.toml' )
 
+# gettext
+lang = gettext.translation(
+    'openitcr', localedir = localedir, languages = ['en_US'])
+lang.install()
+_ = lang.gettext
+
 # setting
 def get_settings_exam():
     return toml.load( settings_exam_path )
@@ -26,19 +32,12 @@ def get_version():
     return settings_exam['version']
 
 def update_settings():
+    settings_exam = get_settings_exam()
     if os.path.exists( settings_path ): 
         settings = toml.load( settings_path )
-        settings_exam = get_settings_exam()
         if settings['version'] != settings_exam['version']:
             settings_exam.update( settings )
             settings_exam['version'] = version
     toml.dump( settings_exam, settings_path )
     
-
-# gettext
-lang = gettext.translation(
-    'openitcr', localedir = localedir, languages = ['en_US'])
-lang.install()
-_ = lang.gettext
-
 #
