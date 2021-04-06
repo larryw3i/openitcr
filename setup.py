@@ -18,7 +18,7 @@ setup(
     },
     author='larryw3i',
     author_email='larryw3i@163.com',
-    license='GPL-3.0',
+    license='GPL-3.0-or-later',
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
@@ -27,7 +27,8 @@ setup(
         'toml==0.10.2',
     ],
     classifiers=[
-        'License :: OSI Approved :: GNU Affero General Public License v3',
+        'License :: OSI Approved :: GNU General Public License v3 or later '+
+        '(GPLv3+)',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
     ],

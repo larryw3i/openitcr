@@ -106,10 +106,11 @@ class MainFrame:
         openitcrlb = tk.Label( abouttl, text = 'OPENITCR',\
         font=('', 22))
 
+        licenselb = tk.Label( abouttl, text = _('') )
+
         detaillb = tk.Label( abouttl, text = _('Open Information Technology '+
         "Classroom.\n(In fact, it's just some unities, I do nothing, "+
         "thank you to the developers of all relevant projects)") )
-
 
         to_project_url = tk.Label(abouttl, text= project_url, fg="blue", \
         cursor="hand2")

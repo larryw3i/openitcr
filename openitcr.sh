@@ -16,4 +16,9 @@ st(){
     bash openitcr/bin/openitcr
 }
 
+twine(){
+    python setup.py sdist bdist_wheel
+    twine upload dist/*
+}
+
 $1
