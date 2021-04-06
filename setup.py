@@ -1,8 +1,7 @@
 from setuptools import setup, find_packages
 import re
-version = re.findall('version\s*=\s*(\S+)\s*',
+version = re.findall('version\s*=\s*"(\S+)"\s*',
     open('./openitcr/settings.toml.example','r').read(), re.S)[0]
-
 
 setup(
     name='openitcr',
@@ -18,7 +17,7 @@ setup(
         'Documentation': 'https://github.com/larryw3i/openitcr/docs/docs.md',
     },
     author='larryw3i',
-    author_email='',
+    author_email='larryw3i@163.com',
     license='GPL-3.0',
     packages=find_packages(),
     include_package_data=True,
