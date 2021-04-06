@@ -4,6 +4,7 @@ import re
 import os
 import toml
 from openitcr.settings import settings_path
+import subprocess
 
 lang_reg_str = '^[a-z]{2}_[A-Za-z]{2,}$'
     
@@ -18,5 +19,6 @@ def set_lang(  lstr='' ):
     toml.dump( settings, open(settings_path, 'w') )
 
 def restart_openitcr():
-    _python = sys.executable
-    os.execl( _python, _python, *sys.argv)
+    subprocess.Popen("python3 -c 'from openitcr.enjoy import _now; _now();'", \
+    shell=True)
+    quit()

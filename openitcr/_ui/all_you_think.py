@@ -8,6 +8,12 @@ from openitcr.settings import localedir
 import os
 from openitcr.common import set_lang, restart_openitcr
 
+def can_come_true():
+    
+    app = MainFrame()
+    app.run()
+    
+
 class MainFrame:
     def __init__( self, master=None ):
         # build ui
@@ -22,7 +28,6 @@ class MainFrame:
 
         self.master.geometry( f'{self.halfswidth}x{ self.halfsheight }' )
 
-
         self.desktopsf = ttk.Frame( self.master, width = self.halfswidth )
         self.alldsb = tk.Scrollbar( self.desktopsf )
         self.alldsb.configure( orient='vertical' )
@@ -35,7 +40,6 @@ class MainFrame:
         self.langcbb.pack( anchor='e', side='bottom' )
         self.langcbb.bind("<<ComboboxSelected>>", self.change_lang )
         self.config_menubar()
-
         # Main widget
         self.mainwindow = self.master
 
@@ -98,7 +102,8 @@ class MainFrame:
 
     def exit(  self  ):
         self.master.destroy(  )
-        quit(  )
+        os.system('bash openitcr/bin/openitcr')
+        quit()
 
     def run( self ):
         self.mainwindow.mainloop(  )
