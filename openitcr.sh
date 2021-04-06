@@ -16,7 +16,9 @@ st(){
     bash openitcr/bin/openitcr
 }
 
-twine(){
+_twine(){
+    git_push
+    rm -rf build/ dist/
     python setup.py sdist bdist_wheel
     twine upload dist/*
 }
