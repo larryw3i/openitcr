@@ -18,3 +18,4 @@ localedir =  os.path.join( project_path, 'locale')
 settings_exam_path = os.path.join( project_path,'settings.toml.example' )
 settings_path = os.path.join( project_path,'settings.toml' )
 
+project_url = 'https://github.com/larryw3i/openitcr'
