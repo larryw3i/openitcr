@@ -22,7 +22,11 @@ setup(
     license='GPL-3.0',
     packages=find_packages(),
     include_package_data=True,
-    install_requires=[],
+    install_requires=[
+        'Babel==2.9.0',
+        'pytz==2021.1',
+        'toml==0.10.2',
+    ],
     classifiers=[
         'License :: OSI Approved :: GNU Affero General Public License v3',
         'Programming Language :: Python :: 3.7',
