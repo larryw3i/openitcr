@@ -37,13 +37,10 @@ class Enjoy():
         self.settings_exam = None
         self.settings = None
         self.ready()
-    
 
     def ready( self ):
         if not self.is_initialized(): 
             self.initialize(  )
-        if self.settings == None:
-            self.settings = toml.load( settings_path )
         os.environ['openitcr_version'] = self.get_version(  )
         os.environ['openitcr_lang'] = self.get_lang()
 
@@ -55,7 +52,6 @@ class Enjoy():
         lang = sys_lang if st_lang == 'en_US' and sys_lang in locale_langs \
         else st_lang
         return lang
-
 
     # setting
     def get_settings_exam( self ):
@@ -76,7 +72,6 @@ class Enjoy():
         self.update_settings(  )
         self.pybabel_compile()
         
-    
     def pybabel_compile(self):
         for  (dirpath, dirnames, filenames) in os.walk( localedir ):
             for f in filenames:
@@ -98,8 +93,8 @@ class Enjoy():
         version = settings_exam['version']
         settings_exam.update( settings )
         settings_exam['version'] = version
-        self.settings = self.settings_exam =  settings_exam
 
+        self.settings = self.settings_exam =  settings_exam
         toml.dump( self.settings_exam, open(settings_path, 'w') )
-        
-    #   
+     
+    #

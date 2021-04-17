@@ -13,7 +13,6 @@ def can_come_true():
     
     app = MainFrame()
     app.run()
-    
 
 class MainFrame:
     def __init__( self, master=None ):
@@ -105,15 +104,16 @@ class MainFrame:
         abouttl.resizable(0,0)
         openitcrlb = tk.Label( abouttl, text = 'OPENITCR',\
         font=('', 22))
-
-        licenselb = tk.Label( abouttl, text = _('') )
-
-        detaillb = tk.Label( abouttl, text = _('Open Information Technology '+
+        detail_txt = _('Open Information Technology '+
         "Classroom.\n(In fact, it's just some unities, I do nothing, "+
-        "thank you to the developers of all relevant projects)") )
+        "thank you to the developers of all relevant projects)")
+        license_txt = _('under the GPLv3+ license')
 
-        to_project_url = tk.Label(abouttl, text= project_url, fg="blue", \
-        cursor="hand2")
+        detaillb = tk.Label( abouttl, text = detail_txt )
+
+        to_project_url = tk.Label(abouttl, \
+        text= f'{project_url}\n{license_txt}', fg="blue", cursor="hand2")
+
         to_project_url.bind("<Button-1>", \
         lambda e: webbrowser.open_new(project_url))
 
