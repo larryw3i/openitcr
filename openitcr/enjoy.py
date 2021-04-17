@@ -8,6 +8,7 @@ from openitcr.settings import settings_exam_path, settings_path, project_path, \
 localedir
 import re
 import toml
+import locale
 from openitcr.common import str_is_lang
 
 def _now():
@@ -33,7 +34,7 @@ class Enjoy():
     Use only in this script
     '''
     def __init__(self):
-        self.settings_exam = self.get_settings_exam()
+        self.settings_exam = None
         self.settings = None
         self.ready()
     
@@ -49,18 +50,24 @@ class Enjoy():
     def get_lang( self  ):
         locale_langs = [ l for l in os.listdir( f'{project_path}/locale') if  \
         str_is_lang( l ) ]
-        lang = self.settings['lang']
-        lang = 'en_US' if (not lang in locale_langs) else lang
-        print('lang -> '+lang )
+        sys_lang = locale.getdefaultlocale()[0]
+        st_lang = self.settings['lang']
+        lang = sys_lang if st_lang == 'en_US' and sys_lang in locale_langs \
+        else st_lang
         return lang
 
 
     # setting
     def get_settings_exam( self ):
-        return toml.load( settings_exam_path )
+        if self.settings_exam == None:
+            self.settings_exam = toml.load( settings_exam_path ) 
+        return self.settings_exam
 
     def get_settings(self):
-        return toml.load( settings_path )
+        if self.settings != None: return self.settings
+        if os.path.exists( settings_path ): 
+            self.settings =  toml.load( settings_path )
+            return self.settings
 
     def get_version( self  ):
         return self.settings_exam['version']
@@ -79,18 +86,20 @@ class Enjoy():
                     print(f'Compiled -> {dirpath}/openitcr.po')
 
     def is_initialized(self):
-        if  os.path.exists( settings_path ) :
-            self.settings = toml.load( settings_path )
-            if self.settings['version'] == self.settings_exam['version']:
-                return True
+        settings = self.get_settings()
+        settings_exam = self.get_settings_exam()
+        if settings == None: return False
+        if settings['version'] == self.settings_exam['version']: return True
         return False
 
     def update_settings( self ):
-        if os.path.exists( settings_path ): 
-            if self.settings['version'] != self.settings_exam['version']:
-                self.settings_exam.update( settings )
-                self.settings_exam['version'] = version
-                self.settings = self.settings_exam
+        settings = self.get_settings()
+        settings_exam = self.get_settings_exam()
+        version = settings_exam['version']
+        settings_exam.update( settings )
+        settings_exam['version'] = version
+        self.settings = self.settings_exam =  settings_exam
+
         toml.dump( self.settings_exam, open(settings_path, 'w') )
         
     #   
