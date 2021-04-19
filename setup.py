@@ -36,7 +36,7 @@ setup(
     # scripts=['openitcr/bin/openitcr'],
     entry_points={
         'console_scripts': [
-            'openitcr=openitcr:enjoy:_now',
+            'openitcr=openitcr:_now',
         ]
     },
 )
