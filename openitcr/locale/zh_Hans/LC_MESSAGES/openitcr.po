@@ -98,7 +98,7 @@ msgid ""
 "developers of all relevant projects)"
 msgstr ""
 "Open Information Technology Classroom.\n"
-"(我仅仅是把一些工具收集起来, 其实并没有做什么, 真心感谢这些相关工"
+"(我仅仅是把一些工具收集起来, 其实并没有做什么, 真心感谢这些相关工具的项目)"
 
 msgid "under the GPLv3+ license"
 msgstr "在 GPLv3+ 下授权"

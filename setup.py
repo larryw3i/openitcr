@@ -33,5 +33,10 @@ setup(
         'Programming Language :: Python :: 3.8',
     ],
     python_requires='>=3.7',
-    scripts=['openitcr/bin/openitcr'],
+    # scripts=['openitcr/bin/openitcr'],
+    entry_points={
+        'console_scripts': [
+            'openitcr=openitcr:enjoy:_now',
+        ]
+    },
 )
