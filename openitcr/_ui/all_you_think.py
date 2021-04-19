@@ -18,7 +18,8 @@ class MainFrame:
     def __init__( self, master=None ):
 
         # build ui
-        self.master = tk.Tk(  ) if master == None else master
+        self.master = tk.Tk( ) if master == None else master
+        self.master.title( _('OPENITCR') )
         self.lang_dict = self.get_lang_dict()
 
         self.screenwidth = self.master.winfo_screenwidth(  )
@@ -100,7 +101,8 @@ class MainFrame:
         self.master.config(  menu = menubar  )
 
     def about(self):
-        abouttl = Toplevel(self.master)
+        abouttl = Toplevel(self.master )
+        abouttl.title( _('ABOUT OPENITCR') )
         abouttl.resizable(0,0)
         openitcrlb = tk.Label( abouttl, text = 'OPENITCR',\
         font=('', 22))
