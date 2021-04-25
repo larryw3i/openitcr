@@ -3,7 +3,7 @@ import sys
 import re
 import os
 import toml
-from openitcr.settings import settings_path
+from openitcr.settings import settings_path, localedir
 import subprocess
 
 lang_reg_str = '^[a-z]{2}_[A-Za-z]{2,}$'
@@ -22,3 +22,13 @@ def restart_openitcr():
     subprocess.Popen("python3 -c 'from openitcr.enjoy import _now; _now();'", \
     shell=True)
     quit()
+
+
+def pybabel_compile():
+    for  (dirpath, dirnames, filenames) in os.walk( localedir ):
+        for f in filenames:
+            if f == 'openitcr.po':
+                os.system(f'pybabel compile -d {localedir} '\
+                +f'-i {dirpath}/openitcr.po -o {dirpath}/openitcr.mo')
+                print(f'Compiled -> {dirpath}/openitcr.po')
+

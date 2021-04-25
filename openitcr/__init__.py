@@ -9,7 +9,7 @@ localedir, debug
 import re
 import toml
 import locale
-from openitcr.common import str_is_lang
+from openitcr.common import str_is_lang, pybabel_compile
 
 def _now():
     print('Welcome to openitcr!')
@@ -29,7 +29,7 @@ def _now():
 
     for a in args:
         if a in ['c_po']:
-            _enjoy.pybabel_compile()
+            pybabel_compile()
 
     for a in args:
         # arg 'ts' with test
@@ -79,14 +79,6 @@ class Enjoy():
         self.update_settings(  )
         self.pybabel_compile()
 
-    def pybabel_compile(self):
-        for  (dirpath, dirnames, filenames) in os.walk( localedir ):
-            for f in filenames:
-                if f == 'openitcr.po':
-                    os.system(f'pybabel compile -d {localedir} '\
-                    +f'-i {dirpath}/openitcr.po -o {dirpath}/openitcr.mo')
-                    print(f'Compiled -> {dirpath}/openitcr.po')
-
     def is_initialized(self):
         settings = self.get_settings()
         settings_exam = self.get_settings_exam()
@@ -95,11 +87,12 @@ class Enjoy():
         return False
 
     def update_settings( self ):
-        settings = self.get_settings()
         settings_exam = self.get_settings_exam()
-        version = settings_exam['version']
-        settings_exam.update( settings )
-        settings_exam['version'] = version
+        if os.path.exists( settings_path ):
+            settings = self.get_settings()
+            version = settings_exam['version']
+            settings_exam.update( settings )
+            settings_exam['version'] = version
 
         self.settings = self.settings_exam =  settings_exam
         toml.dump( self.settings_exam, open(settings_path, 'w') )

@@ -3,7 +3,6 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
@@ -19,11 +18,11 @@ msgstr ""
 
 #: openitcr/_ui/all_you_think.py:52 openitcr/_ui/all_you_think.py:81
 msgid "Exit"
-msgstr ""
+msgstr "Exit"
 
 #: openitcr/_ui/all_you_think.py:53
 msgid "Do you want to restart the app now and make it work?"
-msgstr ""
+msgstr "Do you want to restart the app now and make it work?"
 
 #: openitcr/_ui/all_you_think.py:73
 msgid "New"
